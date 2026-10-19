@@ -43,7 +43,7 @@ public, official, key-less endpoints:
 ## Install
 
 ```bash
-git clone <this repo> && cd needminer
+git clone https://github.com/happysproutstore-lang/needminer && cd needminer
 python3 -m venv .venv && source .venv/bin/activate
 pip install -e .            # core: only depends on `requests`
 pip install -e .[trends]    # optional: Google Trends
