@@ -1,6 +1,9 @@
-# need-scanner
+# NeedMiner
 
-**Find unmet user needs from public evidence — no Reddit, no API keys required.**
+**Mine real user needs from app reviews — no Reddit, no API keys required.**
+
+> Looking for a GummySearch alternative? GummySearch is shutting down; NeedMiner finds
+> user needs from App Store reviews, Hacker News and Stack Exchange instead of Reddit.
 
 Give it a product category ("budget app", "sleep tracker", "invoice maker") and one or more
 countries. It reads what real users say about the existing apps and what developers complain
@@ -25,7 +28,7 @@ Everything except `--llm` runs at zero cost. Output: Markdown + CSV (+ JSON).
 
 ## Why
 
-Reddit-based pain-point tools depend on a data licence they may not get. need-scanner uses only
+Reddit-based pain-point tools depend on a data licence they may not get. needminer uses only
 public, official, key-less endpoints:
 
 | Source | Endpoint | Key needed |
@@ -40,7 +43,7 @@ public, official, key-less endpoints:
 ## Install
 
 ```bash
-git clone <this repo> && cd need-scanner
+git clone <this repo> && cd needminer
 python3 -m venv .venv && source .venv/bin/activate
 pip install -e .            # core: only depends on `requests`
 pip install -e .[trends]    # optional: Google Trends
@@ -53,16 +56,16 @@ Configuration is environment variables only. Copy `.env.example` and export the 
 ## Usage
 
 ```bash
-need-scanner "budget app"                                  # US App Store + HN + Stack Exchange
-need-scanner "budget app" --country us,gb,de --apps 5      # several countries
-need-scanner "meditation" --country tr --pages 5           # non-English stores work too
-need-scanner "invoice maker" --se-sites money,webapps --hn-count 200
-need-scanner "sleep tracker" --trends --llm                # optional extras
-need-scanner "budget app" --no-community --no-save         # store only, print to terminal
-python -m need_scanner --help
+needminer "budget app"                                  # US App Store + HN + Stack Exchange
+needminer "budget app" --country us,gb,de --apps 5      # several countries
+needminer "meditation" --country tr --pages 5           # non-English stores work too
+needminer "invoice maker" --se-sites money,webapps --hn-count 200
+needminer "sleep tracker" --trends --llm                # optional extras
+needminer "budget app" --no-community --no-save         # store only, print to terminal
+python -m needminer --help
 ```
 
-Reports are written to `./reports/` (or `--out DIR` / `NEED_SCANNER_OUTPUT_DIR`):
+Reports are written to `./reports/` (or `--out DIR` / `NEEDMINER_OUTPUT_DIR`):
 
 - `<date>_<term>.md` — the human-readable report
 - `<date>_<term>_apps.csv` — one row per app
@@ -74,7 +77,7 @@ News request, 1 request per Stack Exchange site.
 
 ## Example output
 
-Real run, 2026-10-19: `need-scanner "budget app" --country us --apps 3 --pages 2 --hn-count 50 --se-sites webapps,money`
+Real run, 2026-10-19: `needminer "budget app" --country us --apps 3 --pages 2 --hn-count 50 --se-sites webapps,money`
 (full files in [`examples/`](examples/)).
 
 ```markdown
@@ -102,7 +105,7 @@ Real run, 2026-10-19: `need-scanner "budget app" --country us --apps 3 --pages 2
 - Stack Exchange content is CC BY-SA — keep the links when you republish.
 - Google Trends access goes through the unofficial `pytrends` package; it is off by default and
   backs off for several hours after an HTTP 429.
-- Respect each source's terms of use and rate limits; set `NEED_SCANNER_USER_AGENT` to identify
+- Respect each source's terms of use and rate limits; set `NEEDMINER_USER_AGENT` to identify
   yourself.
 
 ## Development

@@ -1,4 +1,4 @@
-from need_scanner import text
+from needminer import text
 
 
 def test_classify_pricing():

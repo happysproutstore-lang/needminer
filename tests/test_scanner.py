@@ -3,8 +3,8 @@ import json
 
 import pytest
 
-from need_scanner import appstore, community, llm, report, scanner, trends
-from need_scanner.config import Settings
+from needminer import appstore, community, llm, report, scanner, trends
+from needminer.config import Settings
 
 from .conftest import FakeResponse
 
@@ -158,7 +158,7 @@ def test_trends_growth_helper():
 
 def test_trends_cooldown_skips_request(tmp_path, monkeypatch):
     state = tmp_path / "t.json"
-    monkeypatch.setenv("NEED_SCANNER_TRENDS_STATE", str(state))
+    monkeypatch.setenv("NEEDMINER_TRENDS_STATE", str(state))
     s = Settings()
     trends._record_429(s, "429 Too Many Requests")
     assert "cooldown" in trends.yearly_growth("budget app", settings=s)["error"]
@@ -177,7 +177,7 @@ def test_reports_written(fake_sources, tmp_path):
 
 
 def test_cli_no_save(fake_sources, capsys):
-    from need_scanner.cli import main
+    from needminer.cli import main
     assert main(["budget app", "--country", "us", "--se-sites", "webapps", "--no-save"]) == 0
     assert "Need scan" in capsys.readouterr().out
 
@@ -193,4 +193,4 @@ def test_stackexchange_key_from_env(monkeypatch):
     c = community.StackExchangeClient(Settings())
     c.questions("x", site="webapps", count=500)
     assert seen["params"]["key"] == "placeholder-key" and seen["params"]["pagesize"] == 100
-    assert "need-scanner" in seen["headers"]["User-Agent"]
+    assert "needminer" in seen["headers"]["User-Agent"]

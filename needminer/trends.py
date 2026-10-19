@@ -2,7 +2,7 @@
 
 Uses the unofficial `pytrends` package (install with `pip install .[trends]`). It is OFF by
 default (`--trends` turns it on). After an HTTP 429 a cooldown file is written and no Trends
-request is sent for NEED_SCANNER_TRENDS_COOLDOWN_HOURS, so we never hammer the endpoint.
+request is sent for NEEDMINER_TRENDS_COOLDOWN_HOURS, so we never hammer the endpoint.
 """
 
 import json

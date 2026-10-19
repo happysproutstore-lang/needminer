@@ -3,7 +3,7 @@ requires = ["setuptools>=61"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "need-scanner"
+name = "needminer"
 version = "0.1.0"
 description = "Find unmet user needs from App Store reviews, Hacker News and Stack Exchange - no Reddit, no API keys required."
 readme = "README.md"
@@ -18,10 +18,10 @@ llm = ["google-genai>=1.0"]
 dev = ["pytest>=7"]
 
 [project.scripts]
-need-scanner = "need_scanner.cli:main"
+needminer = "needminer.cli:main"
 
 [tool.setuptools]
-packages = ["need_scanner"]
+packages = ["needminer"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

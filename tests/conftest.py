@@ -22,5 +22,5 @@ def no_network(monkeypatch):
         raise AssertionError(f"real network call attempted: {args[:1]}")
     monkeypatch.setattr(requests, "get", poison)
     monkeypatch.setattr(requests, "post", poison)
-    for name in ("NEED_SCANNER_LLM", "GEMINI_API_KEY", "STACKEXCHANGE_KEY"):
+    for name in ("NEEDMINER_LLM", "GEMINI_API_KEY", "STACKEXCHANGE_KEY"):
         monkeypatch.delenv(name, raising=False)

@@ -25,21 +25,21 @@ def _env_int(name: str, default: int) -> int:
 @dataclass
 class Settings:
     user_agent: str = field(default_factory=lambda: os.environ.get(
-        "NEED_SCANNER_USER_AGENT", "need-scanner/0.1 (open-source market research CLI)"))
-    http_timeout: int = field(default_factory=lambda: _env_int("NEED_SCANNER_HTTP_TIMEOUT", 20))
-    output_dir: str = field(default_factory=lambda: os.environ.get("NEED_SCANNER_OUTPUT_DIR", "reports"))
+        "NEEDMINER_USER_AGENT", "needminer/0.1 (open-source market research CLI)"))
+    http_timeout: int = field(default_factory=lambda: _env_int("NEEDMINER_HTTP_TIMEOUT", 20))
+    output_dir: str = field(default_factory=lambda: os.environ.get("NEEDMINER_OUTPUT_DIR", "reports"))
     # Optional LLM grouping (off by default).
-    llm_enabled: bool = field(default_factory=lambda: _env_bool("NEED_SCANNER_LLM", False))
+    llm_enabled: bool = field(default_factory=lambda: _env_bool("NEEDMINER_LLM", False))
     gemini_api_key: str = field(default_factory=lambda: os.environ.get("GEMINI_API_KEY", ""))
     # flash-lite does not spend "thinking" tokens on short classification prompts (cheapest option).
     gemini_model: str = field(default_factory=lambda: os.environ.get(
-        "NEED_SCANNER_GEMINI_MODEL", "gemini-flash-lite-latest"))
+        "NEEDMINER_GEMINI_MODEL", "gemini-flash-lite-latest"))
     # Optional Stack Exchange app key: raises the anonymous quota (300 requests/day/IP).
     stackexchange_key: str = field(default_factory=lambda: os.environ.get("STACKEXCHANGE_KEY", ""))
     # Google Trends cooldown state file (after an HTTP 429 no Trends request is sent for N hours).
     trends_state_file: str = field(default_factory=lambda: os.environ.get(
-        "NEED_SCANNER_TRENDS_STATE", os.path.join(".cache", "trends_429.json")))
-    trends_cooldown_hours: int = field(default_factory=lambda: _env_int("NEED_SCANNER_TRENDS_COOLDOWN_HOURS", 6))
+        "NEEDMINER_TRENDS_STATE", os.path.join(".cache", "trends_429.json")))
+    trends_cooldown_hours: int = field(default_factory=lambda: _env_int("NEEDMINER_TRENDS_COOLDOWN_HOURS", 6))
 
 
 def load_settings() -> Settings:

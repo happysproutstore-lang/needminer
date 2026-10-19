@@ -1,4 +1,4 @@
-"""Command line entry point: `need-scanner "budget app" --country us,gb`."""
+"""Command line entry point: `needminer "budget app" --country us,gb`."""
 
 import argparse
 import sys
@@ -11,7 +11,7 @@ from .scanner import scan
 
 
 def build_parser() -> argparse.ArgumentParser:
-    p = argparse.ArgumentParser(prog="need-scanner",
+    p = argparse.ArgumentParser(prog="needminer",
                                 description="Find unmet user needs from App Store reviews, Hacker News and Stack Exchange.")
     p.add_argument("term", help='search term, e.g. "budget app"')
     p.add_argument("--country", default="us",
@@ -24,7 +24,7 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--hn-count", type=int, default=100, help="Hacker News comments to scan (0 to skip)")
     p.add_argument("--trends", action="store_true", help="add Google Trends yearly growth (needs pytrends)")
     p.add_argument("--llm", action="store_true", help="group needs with Gemini (needs GEMINI_API_KEY)")
-    p.add_argument("--out", default=None, help="output folder (default: $NEED_SCANNER_OUTPUT_DIR or ./reports)")
+    p.add_argument("--out", default=None, help="output folder (default: $NEEDMINER_OUTPUT_DIR or ./reports)")
     p.add_argument("--no-save", action="store_true", help="print markdown only, write no files")
     p.add_argument("--version", action="version", version=f"%(prog)s {__version__}")
     return p

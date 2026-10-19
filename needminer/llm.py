@@ -1,4 +1,4 @@
-"""Optional LLM grouping (OFF by default; `--llm` or NEED_SCANNER_LLM=1 turns it on).
+"""Optional LLM grouping (OFF by default; `--llm` or NEEDMINER_LLM=1 turns it on).
 
 The model only returns need statements plus the NUMBERS of the texts that support them.
 Every count (evidence, willingness to pay, apps, sources) is computed by code from those
