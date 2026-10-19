@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "need-scanner"
+version = "0.1.0"
+description = "Find unmet user needs from App Store reviews, Hacker News and Stack Exchange - no Reddit, no API keys required."
+readme = "README.md"
+license = {text = "MIT"}
+authors = [{name = "HAPPYSPROUTSTORE LLC"}]
+requires-python = ">=3.9"
+dependencies = ["requests>=2.28"]
+
+[project.optional-dependencies]
+trends = ["pytrends>=4.9"]
+llm = ["google-genai>=1.0"]
+dev = ["pytest>=7"]
+
+[project.scripts]
+need-scanner = "need_scanner.cli:main"
+
+[tool.setuptools]
+packages = ["need_scanner"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

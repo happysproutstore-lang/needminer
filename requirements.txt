@@ -1,0 +1,4 @@
+requests>=2.28
+# optional:
+# pytrends>=4.9      (--trends)
+# google-genai>=1.0  (--llm)

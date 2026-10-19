@@ -1,0 +1,4 @@
+country,app,developer,rating_count,average_rating,price,genre,reviews_fetched,low_star_share,top_complaints,url
+us,Budget app - spending tracker,InnerGrow,16200,4.72,Free,Finance,100,0.25,pricing_subscription;missing_feature;support;bugs_crashes;accuracy_quality;ads;localization,https://apps.apple.com/us/app/budget-app-spending-tracker/id1525179720?uo=4
+us,EveryDollar: Budget Management,The Lampo Group Incorporated,84158,4.73,Free,Finance,100,0.39,missing_feature;pricing_subscription;accuracy_quality;bugs_crashes;support;ads;privacy_data,https://apps.apple.com/us/app/everydollar-budget-management/id942571931?uo=4
+us,Fleur - Budget Planner App,Akash Jain,13058,4.8,Free,Finance,100,0.03,pricing_subscription;support;bugs_crashes;ads;accuracy_quality,https://apps.apple.com/us/app/fleur-budget-planner-app/id1621020173?uo=4
